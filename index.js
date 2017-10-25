@@ -64,7 +64,7 @@ module.exports = require('enb/lib/build-flow').create()
                 }
             }),
             cmd = `${phantomPath} '${mochaPhantomjsPath}' '${sourceTargetFilePath}' '${mochaReporterPath}' '${config}'`;
-        
+
         function runPhantom() {
             runAsync(cmd)
                 .then(function() {
