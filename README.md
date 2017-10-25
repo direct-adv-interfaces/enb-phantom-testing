@@ -37,3 +37,29 @@ nodeConfig.addTech([
 
 nodeConfig.addTargets(['?.test-result.json']);
 ```
+
+## JSON reporter
+
+Формирует JSON с информацией о результатах выполнения тестов. В отличие от репортера `"json"`, входящего в состав mocha, он включает в результат
+информацию о покрытии кода тестами, если доступен объект `window.__coverage__`.
+
+### Пример
+
+```
+$ ./node_modules/phantomjs/bin/phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js path/to/file.html ./mocha-json-reporter.js
+```
+
+### Пример результата
+
+```javascript
+ {
+     result: {
+         stats: { ... },
+         tests: [ ... ],
+         pending: [ ... ],
+         failures: [ ... ],
+         passes: [ ... ]
+     },
+     coverage: { ... }
+ }
+```
