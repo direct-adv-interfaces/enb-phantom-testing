@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Mocha Tests</title>
+        <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+    </head>
+    <body>
+        <div id="mocha"></div>
+        <script src="../node_modules/mocha/mocha.js"></script>
+        <script src="../node_modules/chai/chai.js"></script>
+        <script>
+            // Добавляет в window интерфейсы для описания тестов (describe и пр.)
+            if (typeof window.initMochaPhantomJS === 'function') {
+                window.initMochaPhantomJS();
+            }
+
+            mocha.setup('bdd');
+
+            var assert = chai.assert;
+
+            describe('Array', function() {
+
+                for (var i = 0; i < 11; i++) {
+
+                    it(i + ' - should return -1 when the value is not present', function() {
+                        var foundIndex = [1, 2, 3].indexOf(4);
+
+                        assert.equal(-1, foundIndex);
+                    });
+                }
+            });
+
+            if (window.mochaPhantomJS) {
+                window.mochaPhantomJS.run();
+            } else {
+                window.mocha.run();
+            }
+        </script>
+    </body>
+</html>
